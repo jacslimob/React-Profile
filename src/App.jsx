@@ -1,12 +1,15 @@
 
 import { Outlet } from 'react-router-dom';
-import Nav from './components/Nav';
+
+import Header from './pages/Header.jsx'
+import Footer from './pages/Footer.jsx';
 
 function App() {
   return (
     <>
-      <Nav />
+      <Header />
       <Outlet />
+      <Footer />
     </>
   );
 }
