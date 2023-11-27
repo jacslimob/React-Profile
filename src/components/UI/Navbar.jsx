@@ -1,9 +1,9 @@
 export default function Nav({ links }) {
     return (
-      <nav className="navbar navbar-expand-lg bg-secondary">
-        <div className="container-fluid">
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+      <nav className="">
+        <div className="">
+          <div className="" id="navbarSupportedContent">
+            <ul className="flex flex-wrap text-sm font-medium text-center">
               {links.map((link) => link)}
             </ul>
           </div>
@@ -11,4 +11,3 @@ export default function Nav({ links }) {
       </nav>
     );
   }
-  

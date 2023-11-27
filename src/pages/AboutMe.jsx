@@ -1,25 +1,20 @@
+import pic from '../images/family.jpeg'
+
+
 export default function AboutMe() {
     return (
-        <section className="opt-about-me">
-            <img src="./assets/images/family.JPG" alt="Picture of family" className="float-right"/>
-            <h2>About Me</h2>
-            <p>
-                Hello my name is Jacob Maughan. Here are a few things about me:
-            </p>
-            <ul>
-                <li>
-                    Basketball is my Favorite Sport but I like all Sports.
-                </li>
-                <li>
-                    My free time is spent with my Wife and 4 children and 2 dogs.
-                </li>
-                <li>
-                    I am looking to make a career change.
-                </li>
-                <li>
-                    Certified with a grade IV water treatment certificate in the state of Utah.
-                </li>
-            </ul>
+        <section className="flex justify-center mt-20">
+            <div className="ml-10">
+                <img src={pic} alt="Picture of family" className="float-left"/>
+            </div>
+            <div className="ml-10">
+                <h2 className="text-4xl text-blue-800">About Me</h2>
+            
+                <p className="w-3/4 justify-center my-20">
+                    I'm Jacob Maughan, an aspiring web developer currently pursuing a Full-Stack Development certificate from the University of Utah. Proficient in HTML, CSS, JavaScript, Node.js, MySql, and React, I am dedicated to mastering the art of web development. My goal is to contribute innovative solutions and create seamless user experiences that exceed expectations. Equipped with a solid foundation from my program, I'm excited to collaborate on projects that challenge and inspire. Let's connect and explore the vast world of web development together!
+                </p>
+            </div>
+            
         </section>
     )
 }
