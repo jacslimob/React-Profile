@@ -32,7 +32,7 @@ export default function Nav() {
           className={`me-2 inline-block p-2 ${currentPath === '/contact' ? 'bg-blue-300' : 'bg-blue-500'} rounded-t-lg text-white hover:text-black hover:bg-blue-300`} 
           to="/contact"
         >
-          Contact
+          Contact Me
         </Link>,
         <Link 
           key={4} 
