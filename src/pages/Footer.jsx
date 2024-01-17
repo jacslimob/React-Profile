@@ -1,18 +1,19 @@
 export default function Footer() {
     return (
         <footer className='bg-blue-800 fixed bottom-0 w-full'>
-            <h2>Jacob Maughan</h2>
-            <p>
-                Thank you for checking out my page!
-            </p>
-            <div className="social-icons mt-4">
-                <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" rel="noopener noreferrer">
-                    {/* <FontAwesomeIcon icon="fa-brands fa-linkedin" /> */}
+
+
+            <div className="m-4 flex justify-evenly social-icons text-white">
+                <a className="hover:underline" href="https://www.linkedin.com/in/jacob-maughan-355835218/" target="_blank" rel="noopener noreferrer">
+                    LinkedIn
                 </a>
-                <a href="https://github.com/your-github-profile" target="_blank" rel="noopener noreferrer">
-                    <i className="fab fa-github fa-lg"></i>
+                <a className="hover:underline" href="https://github.com/jacslimob" target="_blank" rel="noopener noreferrer">
+                    Github
                 </a>
             </div>
+            <center className="text-white mb-4">
+                Thank you for checking out my page!
+            </center>
         </footer>
     )
 }
