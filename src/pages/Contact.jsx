@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export default function Contact() {
     const [formState, setFormState] = useState({
@@ -28,12 +28,22 @@ export default function Contact() {
         event.preventDefault();
 
         try {
-            console.log(formState);
-            clearForm();
-        } catch (e) {
-            console.error(e);
+            const response = await fetch('/.netlify/functions/submitForm', {
+                method: 'POST',
+                body: JSON.stringify(formState),
+            });
+
+            if (response.ok) {
+                console.log('Form data sent successfully');
+                clearForm();
+            } else {
+                console.error('Failed to send form data');
+            }
+        } catch (error) {
+            console.error('Error:', error);
         }
     };
+
 
     return (
         <section className="mb-32" id="Contact-me">
@@ -72,7 +82,7 @@ export default function Contact() {
 
                     <button
                         onClick={handleSubmit}
-                        className="rounded px-2 bg-blue-500">
+                        className="bg-blue-600 p-2 text-white hover:text-blue-600 hover:bg-sky-400 ml-4 rounded">
                         Submit
                     </button>
                 </form>

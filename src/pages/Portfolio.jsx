@@ -43,8 +43,8 @@ const projects = [
 export default function Portfolio() {
     return (
         <section id="Projects" className="mt-10 mb-32">
-            <center className='text-4xl underline'>Projects</center>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4'>
+            <center className='text-4xl underline font-semibold'>Projects</center>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4 justify-items-center'>
                 {projects.map((project, index) => (
                     <ProjectCard key={index} {...project} />
                 ))}
