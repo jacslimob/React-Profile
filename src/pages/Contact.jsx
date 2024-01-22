@@ -36,7 +36,7 @@ export default function Contact() {
     };
 
     return (
-        <section className="mb-24" id="Contact-me">
+        <section className="mb-32" id="Contact-me">
             <h2>
                 <center className="text-4xl mt-8 mb-2 font-semibold">-Contact Me-</center>
                 <center className="font-light mb-8">Please leave me your information. Along with any comments.</center>

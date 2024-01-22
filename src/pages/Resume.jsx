@@ -3,7 +3,7 @@ import resume from '../assets/resume.pdf';
 export default function Resume() {
     return (
 
-        < section >
+        < section className='mb-32'>
             <center className='text-4xl m-8'>Skills</center>
             <div className='grid grid-cols-2'>
                 <div className=''>
@@ -13,13 +13,19 @@ export default function Resume() {
                         <li>CSS</li>
                         <li>JavaScript</li>
                         <li>NODE.js</li>
+                        <li>MySql</li>
+                        <li>React</li>
+                        <li>Mongo</li>
                     </center>
                 </div>
                 <div className=''>
                     <center className='underline text-2xl'>Other</center>
-                    <ol>
-                        <li></li>
-                    </ol>
+                    <center>
+                        <li>Quick Learner</li>
+                        <li>Great Communicator</li>
+                        <li>Responsible</li>
+                        <li>Adaptable</li>
+                    </center>
                 </div>
             </div>
             <center className='mt-8'><a href={resume} download="Jacob_Maughan_Resume.pdf">
