@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState } from 'react';
 
 export default function Contact() {
@@ -21,27 +22,50 @@ export default function Contact() {
             name: '',
             email: '',
             message: '',
+            sent: false,
+            buttonText: 'Submit',
+            err: ''
         });
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        try {
-            const response = await fetch('/.netlify/functions/SubmitForm', {
-                method: 'POST',
-                body: JSON.stringify(formState),
-            });
+        setFormState({
+            ...formState,
+            buttonText: 'Sending...'
+        })
 
-            if (response.ok) {
-                console.log('Form data sent successfully');
-                clearForm();
-            } else {
-                console.error('Failed to send form data');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-        }
+        axios.post('api/sendmail', formState)
+            .then(res => {
+                if (res.data.result !== 'success') {
+                    setFormState({
+                        ...formState,
+                        buttonText: 'Failed to send',
+                        sent: false,
+                        err: 'fail'
+                    })
+                    setTimeout(() => {
+                        clearForm()
+                    }, 6000)
+                } else {
+                    setFormState({
+                        ...formState,
+                        sent: true,
+                        buttonText: 'Sent',
+                        err: 'success'
+                    })
+                    setTimeout(() => {
+                        clearForm();
+                    }, 6000)
+                }
+            }).catch((err) => {
+                setFormState({
+                    ...formState,
+                    buttonText: 'Failed to send',
+                    err: 'fail'
+                })
+            })
     };
 
 
@@ -83,7 +107,7 @@ export default function Contact() {
                     <button
                         onClick={handleSubmit}
                         className="bg-blue-600 p-2 text-white hover:text-blue-600 hover:bg-sky-400 ml-4 rounded">
-                        Submit
+                        {formState.buttonText}
                     </button>
                 </form>
             </div>
