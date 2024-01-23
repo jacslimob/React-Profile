@@ -2,23 +2,26 @@ import axios from 'axios';
 import { useState } from 'react';
 
 export default function Contact() {
-    const [formState, setFormState] = useState({
+    const [data, setData] = useState({
         name: '',
         email: '',
         message: '',
+        sent: false,
+        buttonText: 'Submit',
+        err: ''
     });
 
     const handleChange = (event) => {
         const { name, value } = event.target;
 
-        setFormState({
-            ...formState,
+        setData({
+            ...data,
             [name]: value,
         });
     };
 
     function clearForm() {
-        setFormState({
+        setData({
             name: '',
             email: '',
             message: '',
@@ -28,19 +31,19 @@ export default function Contact() {
         });
     }
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
-        setFormState({
-            ...formState,
+        setData({
+            ...data,
             buttonText: 'Sending...'
         })
 
-        axios.post('api/sendmail', formState)
+        axios.post('api/sendmail', data)
             .then(res => {
                 if (res.data.result !== 'success') {
-                    setFormState({
-                        ...formState,
+                    setData({
+                        ...data,
                         buttonText: 'Failed to send',
                         sent: false,
                         err: 'fail'
@@ -49,8 +52,8 @@ export default function Contact() {
                         clearForm()
                     }, 6000)
                 } else {
-                    setFormState({
-                        ...formState,
+                    setData({
+                        ...data,
                         sent: true,
                         buttonText: 'Sent',
                         err: 'success'
@@ -60,8 +63,9 @@ export default function Contact() {
                     }, 6000)
                 }
             }).catch((err) => {
-                setFormState({
-                    ...formState,
+                console.log(err.response.status)
+                setData({
+                    ...data,
                     buttonText: 'Failed to send',
                     err: 'fail'
                 })
@@ -80,7 +84,7 @@ export default function Contact() {
                     <label className="block mb-4">
                         Name: <input
                             onChange={handleChange}
-                            value={formState.name}
+                            value={data.name}
                             name="name"
                             type="text"
                             className="rounded px-2 w-full" />
@@ -89,7 +93,7 @@ export default function Contact() {
                     <label className="block mb-4">
                         Email: <input
                             onChange={handleChange}
-                            value={formState.email}
+                            value={data.email}
                             name="email"
                             type="email"
                             className="rounded px-2 w-full" />
@@ -98,7 +102,7 @@ export default function Contact() {
                     <label className="block mb-4">
                         Message: <textarea
                             onChange={handleChange}
-                            value={formState.message}
+                            value={data.message}
                             name="message"
                             rows={4}
                             className="rounded px-2 w-full" />
@@ -107,7 +111,7 @@ export default function Contact() {
                     <button
                         onClick={handleSubmit}
                         className="bg-blue-600 p-2 text-white hover:text-blue-600 hover:bg-sky-400 ml-4 rounded">
-                        {formState.buttonText}
+                        {data.buttonText}
                     </button>
                 </form>
             </div>
