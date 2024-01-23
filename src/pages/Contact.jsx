@@ -28,7 +28,7 @@ export default function Contact() {
         event.preventDefault();
 
         try {
-            const response = await fetch('/.netlify/functions/submitForm', {
+            const response = await fetch('/.netlify/functions/SubmitForm', {
                 method: 'POST',
                 body: JSON.stringify(formState),
             });

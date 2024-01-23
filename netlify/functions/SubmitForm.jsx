@@ -1,4 +1,7 @@
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv'
+
+dotenv.config();
 
 export async function handler(event, context) {
     const { name, email, message } = JSON.parse(event.body);
