@@ -7,17 +7,17 @@ exports.handler = function(event, context, callback) {
 
     let transporter = nodemailer.createTransport({
         // service: 'gmail',
-        host: 'smtp.aol.com',
+        host: 'smtp.gmail.com',
         port: 465,
         auth: {
-         user: 'jacobmaughan@aol.com',
-         pass: 'Rememberkara40?'
+         user: GMAIL_USER,
+         pass: GMAIL_PASSWORD
     }
     });
 
     transporter.sendMail({
-        from: 'jacobmaughan@aol.com',
-        to: 'jacobmaughan@aol.com',
+        from: GMAIL_USER,
+        to: GMAIL_USER,
         subject: `Sending with React, Nodemailer and Netlify`,
         html: `
             <h3>Email from ${data.name} ${data.email}<h3>
