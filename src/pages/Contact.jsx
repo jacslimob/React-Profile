@@ -33,18 +33,19 @@ export default function Contact() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log(data),
+            setData({
+                ...data,
 
-        setData({
-            ...data,
-            buttonText: 'Sending...'
-        })
+                buttonText: 'Sending...'
+            })
 
         axios.post('api/sendmail', data)
             .then(res => {
                 if (res.data.result !== 'success') {
                     setData({
                         ...data,
-                        buttonText: 'Failed to send',
+                        buttonText: 'Tried but failed',
                         sent: false,
                         err: 'fail'
                     })
@@ -63,7 +64,7 @@ export default function Contact() {
                     }, 6000)
                 }
             }).catch((err) => {
-                console.log(err.response.status)
+                console.log('Reason: ' + err)
                 setData({
                     ...data,
                     buttonText: 'Failed to send',
