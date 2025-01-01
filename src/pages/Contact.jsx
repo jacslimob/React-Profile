@@ -83,7 +83,7 @@ export default function Contact() {
                     ...form,
                     buttonText: 'Failed',
                     sent: false,
-                    err: 'fail'
+                    err: 'Failed to send email. Please try again later.'
                 })
                 setTimeout(() => {
                     clearForm();
